@@ -24,7 +24,7 @@ def timer(time_limit, start):
 
 def choose_activity_and_rep(exercises_dictionary):
     temp_choice = r.choice(list(exercises_dictionary))
-    temp_reps = r.randint(2, exercises_dictionary[temp_choice] + 1)
+    temp_reps = r.randint(2, exercises_dictionary[temp_choice])
 
     activity_and_reps = "Time to do {0} {1}!".format(temp_reps, temp_choice)
 
@@ -34,7 +34,8 @@ def choose_activity_and_rep(exercises_dictionary):
 def main():
     print("THIS IS THE EXERCISE TIMER.\nARE YOU READY?\n")
 
-    target_minutes = int(input("Longest number of minutes between exercises? >> "))
+    min_minutes = int(input("Smallest number of minutes between exercises? >> "))
+    max_minutes = int(input("Longest number of minutes between exercises? >> "))
     print("\nA few questions to build the program\n")
     pushups = int(input("Max number of pushups in an interval? >> "))
     situps = int(input("Max number of situps in an interval? >> "))
@@ -51,7 +52,7 @@ def main():
         start = input("Would you like to begin Timing? (y/n): ")
 
     while start == "y":
-        temp_time = r.randint(1, target_minutes)
+        temp_time = r.randint(min_minutes, max_minutes)
         timer(temp_time, start)
         print(choose_activity_and_rep(exercise_dict))
         start = input("Would you like to begin Timing? (y/n): ")
